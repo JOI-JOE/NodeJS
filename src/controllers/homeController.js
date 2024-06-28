@@ -1,3 +1,5 @@
+const connection = require("../config/database");
+
 const getHomepage = (req, res) => {
   // process database
   res.send("Hello World! VS ngo dang hau");
