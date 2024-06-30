@@ -14,6 +14,43 @@
       <a href="#about">About</a>
     </div>
 
+    
+    <div style="padding-left: 16px">
+        <h2>List User</h2>
+        <table>
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Email</th>
+              <th>Name</th>
+              <th>City</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody>
+          <h1><%= hau %></h1>
+          <% for(let i=0; i<dataUser.length; i++) { %>
+            <tr>
+              <td><%= dataUser[i].id %></td>
+              <td><%= dataUser[i].email %></td>
+              <td><%= dataUser[i].name %></td>
+              <td><%= dataUser[i].city %></td>
+              <td>
+                  <a href="/detail/user/<%= dataUser[i].id %>">Detail</a>
+                  <form action="/edit-user/<%= dataUser[i].id %>" method="GET">
+                    <button type="submit">Edit</button>
+                  </form>
+                  <form action="/delete-user" method="POST">
+                    <input type="hidden" name="usesId" value="<%= dataUser[i].id %>">
+                    <button href="submit">Delete</button>
+                  </form>
+              </td>
+            </tr>
+            <% } %>
+          </tbody>
+        </table>
+      </div>
+
     <h2>HTML Forms</h2>
 
     <div style="padding-left: 16px">
@@ -29,35 +66,5 @@
     </form> 
     </div>
 
-    <div style="padding-left: 16px">
-      <h2>List User</h2>
-      <table>
-        <thead>
-          <tr>
-            <th>ID</th>
-            <th>Email</th>
-            <th>Name</th>
-            <th>City</th>
-            <th>Action</th>
-          </tr>
-        </thead>
-        <tbody>
-        <h1><%= hau %></h1>
-        <% for(let i=0; i<dataUser.length; i++) { %>
-          <tr>
-            <td><%= dataUser[i].id %></td>
-            <td><%= dataUser[i].email %></td>
-            <td><%= dataUser[i].name %></td>
-            <td><%= dataUser[i].city %></td>
-            <td>
-                <a href="/detail/user/<%= dataUser[i].id %>">Detail</a>
-                <a href="/edit/user/<%= dataUser[i].id %>">Edit</a>
-                <a href="/delete/user/<%= dataUser[i].id %>">Delete</a>
-            </td>
-          </tr>
-          <% } %>
-        </tbody>
-      </table>
-    </div>
   </body>
 </html>
